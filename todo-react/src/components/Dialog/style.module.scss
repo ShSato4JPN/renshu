@@ -1,0 +1,22 @@
+.dialog {
+  border: none;
+  border-radius: 20px;
+}
+
+.dialogLayout {
+  display: gird;
+  grid-template-rows: auto 1fr auto;
+}
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.body {
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+}
