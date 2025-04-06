@@ -1,0 +1,13 @@
+.dialog {
+  border: none;
+  background-color: rgba(67, 67, 67, 0.327);
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+  position: fixed;
+}
+
+.dialogContext {
+  border-radius: 20px;
+}

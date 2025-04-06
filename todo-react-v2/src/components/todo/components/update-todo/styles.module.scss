@@ -1,0 +1,25 @@
+.form {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  border-radius: 5px;
+  border: 1px solid #ffffff;
+}
+
+.formItem {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.error {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.submit {
+  display: grid;
+  place-items: center;
+}
