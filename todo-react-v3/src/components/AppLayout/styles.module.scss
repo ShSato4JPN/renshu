@@ -1,0 +1,22 @@
+.appLayout {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.header {
+  display: grid;
+  place-items: center;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.footer {
+  display: grid;
+  place-items: center;
+}
