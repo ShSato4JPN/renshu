@@ -1,0 +1,15 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.formItem {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.submit {
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
