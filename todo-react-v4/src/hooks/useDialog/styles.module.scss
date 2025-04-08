@@ -1,0 +1,20 @@
+.dialog {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border: none;
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff5e;
+}
+
+.dialog[open] {
+  display: grid;
+  place-items: center;
+}
+
+.dialogContext {
+  background-color: #ffa6006c;
+  padding: 20px;
+  border-radius: 10px;
+}

@@ -4,15 +4,14 @@ import { useForm } from "react-hook-form";
 import { ErrorMessage } from "@hookform/error-message";
 import { Todo, useTodo } from "../../../../store/useTodoStore";
 import { schema, UpdateTodoData } from "../../api/update-todo";
-import { useState } from "react";
-import Dialog from "../../../../components/Dialog";
+import useDialog from "../../../../hooks/useDialog";
 
 type UpdateTodoProps = {
   todo: Todo;
 };
 
 export default function UpdateTodo({ todo }: UpdateTodoProps) {
-  const [isOpen, setIsOpen] = useState<boolean>(false);
+  const { onOpen, onClose, Dialog } = useDialog();
 
   const {
     register,
@@ -34,13 +33,13 @@ export default function UpdateTodo({ todo }: UpdateTodoProps) {
 
     alert("更新しました");
 
-    setIsOpen(false);
+    onClose();
   };
 
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>更新</button>
-      <Dialog isOpen={isOpen} onClose={() => setIsOpen(false)}>
+      <button onClick={onOpen}>更新</button>
+      <Dialog>
         <form className={styles.form} onSubmit={handleSubmit(onCreateTodo)}>
           <div className={styles.formItem}>
             <label htmlFor="title">タイトル</label>
@@ -62,7 +61,7 @@ export default function UpdateTodo({ todo }: UpdateTodoProps) {
             <ErrorMessage errors={errors} name="expire" />
           </div>
           <div className={styles.submit}>
-            <button type="button" onClick={() => setIsOpen(false)}>
+            <button type="button" onClick={onClose}>
               キャンセル
             </button>
             <button type="submit">更新</button>
