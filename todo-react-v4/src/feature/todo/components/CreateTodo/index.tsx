@@ -19,7 +19,11 @@ export default function CreateTodo() {
   };
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit(onCreateTodo)}>
+    <form
+      className={styles.form}
+      onSubmit={handleSubmit(onCreateTodo)}
+      role="form"
+    >
       <div className={styles.formItem}>
         <label htmlFor="title">タイトル</label>
         <input type="text" {...register("title")} placeholder="タイトル" />

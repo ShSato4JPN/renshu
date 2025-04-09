@@ -8,7 +8,8 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest",
+    "test:debug": "vitest --inspect-brk"
   },
   "dependencies": {
     "@hookform/error-message": "^2.0.1",
