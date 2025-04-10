@@ -3,10 +3,9 @@ import Dialog from "../../../dialog";
 import { Todo } from "../../../../store/useTodoStore";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { schema } from "../../api/update-todo";
+import { schema, UpdateTodoDta } from "../../api/update-todo";
 import styles from "./styles.module.scss";
 import { ErrorMessage } from "@hookform/error-message";
-import { describe } from "vitest";
 
 type UpdateTodoProps = {
   todo: Todo;
@@ -29,11 +28,23 @@ export default function UpdateTodo({ todo, onUpdate }: UpdateTodoProps) {
     },
   });
 
+  const handleDialogOpen = () => {
+    setIsOpen(true);
+  };
+
+  const handleDialogClose = () => {
+    setIsOpen(false);
+  };
+
+  const updating = (data: UpdateTodoDta) => {
+    console.log(data);
+  };
+
   return (
     <>
-      <button onClick={() => setIsOpen(true)}>編集</button>
-      <Dialog isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <form className={styles.form}>
+      <button onClick={handleDialogOpen}>編集</button>
+      <Dialog isOpen={isOpen} onClose={handleDialogClose}>
+        <form className={styles.form} onSubmit={handleSubmit(updating)}>
           <div className={styles.formItem}>
             <label htmlFor="title">タイトル</label>
             <input
@@ -69,7 +80,11 @@ export default function UpdateTodo({ todo, onUpdate }: UpdateTodoProps) {
             <ErrorMessage errors={errors} name="expire" />
           </div>
           <div className={styles.submit}>
-            <button type="submit" data-testid="submit">
+            <button
+              type="button"
+              data-testid="cancel"
+              onClick={handleDialogClose}
+            >
               キャンセル
             </button>
             <button type="submit" data-testid="submit">

@@ -30,14 +30,12 @@ export default function Dialog({ children, isOpen, onClose }: DialogProps) {
         onClose();
       }
     };
-
+    // ハンドラをマッピング
     if (isOpen) {
-      // ハンドラをマッピング
       document.addEventListener("keydown", handleKeyDown);
     }
-
+    // コンポーネントが削除されると同時にクリーアップ関数でイベントを取り除く
     return () => {
-      // コンポーネントが削除されると同時にクリーアップ関数でイベントを取り除く
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [isOpen, onClose]);
