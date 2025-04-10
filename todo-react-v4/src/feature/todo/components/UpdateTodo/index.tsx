@@ -28,19 +28,19 @@ export default function UpdateTodo({ todo }: UpdateTodoProps) {
 
   const { updateTodo } = useTodo();
 
-  const onCreateTodo = (data: UpdateTodoData) => {
+  const onSubmit = handleSubmit((data: UpdateTodoData) => {
     updateTodo({ ...todo, ...data });
 
     alert("更新しました");
 
     onClose();
-  };
+  });
 
   return (
     <>
       <button onClick={onOpen}>更新</button>
       <Dialog>
-        <form className={styles.form} onSubmit={handleSubmit(onCreateTodo)}>
+        <form className={styles.form} onSubmit={onSubmit}>
           <div className={styles.formItem}>
             <label htmlFor="title">タイトル</label>
             <input type="text" {...register("title")} placeholder="タイトル" />

@@ -14,16 +14,12 @@ export default function CreateTodo() {
 
   const { createTodo } = useTodo();
 
-  const onCreateTodo = (data: CreateTodoData) => {
+  const onSubmit = handleSubmit((data: CreateTodoData) => {
     createTodo(data);
-  };
+  });
 
   return (
-    <form
-      className={styles.form}
-      onSubmit={handleSubmit(onCreateTodo)}
-      role="form"
-    >
+    <form className={styles.form} onSubmit={onSubmit} role="form">
       <div className={styles.formItem}>
         <label htmlFor="title">タイトル</label>
         <input type="text" {...register("title")} placeholder="タイトル" />
