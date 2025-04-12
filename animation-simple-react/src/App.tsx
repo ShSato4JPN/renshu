@@ -23,8 +23,6 @@ const animation = (node: HTMLElement, x: number, y: number, delay?: number) => {
   node.style.transition = "none";
   node.style.transform = `translate(${x}px,${y}px)`;
 
-  console.log(`translate(${x}px,${y}px)`);
-
   if (delay) {
     setTimeout(() => {
       // 強制的にリフロー/レイアウト計算を実行させる
@@ -47,19 +45,21 @@ const HoverAnimeSample = ({
   anime: boolean;
   delay?: number;
 }) => {
-  const [boxColors, setBoxColors] = useState(["red", "blue"]);
+  const [boxColors, setBoxColors] = useState([
+    "red",
+    "blue",
+    "orange",
+    "green",
+  ]);
 
   const positions = useRef<RefValue>({
     red: { x: 0, y: 0, element: null },
     blue: { x: 0, y: 0, element: null },
+    orange: { x: 0, y: 0, element: null },
+    green: { x: 0, y: 0, element: null },
   }).current;
 
-  // console.log("red");
-  // console.log(positions.red.x, positions.red.y);
-  // console.log("blue");
-  // console.log(positions.blue.x, positions.blue.y);
-
-  // 要素が入れ替えられた後のアニメーション処理
+  // // 要素が入れ替えられた後のアニメーション処理
   useEffect(() => {
     if (!anime) return;
 
@@ -105,10 +105,13 @@ const HoverAnimeSample = ({
 
       <button
         onClick={() => {
-          setBoxColors([...boxColors].reverse());
+          setBoxColors((current) => {
+            const first = current.slice(0, 1)[0]; // spliceではなくsliceを使用（元の配列を変更しない）
+            return [...current.slice(1), first];
+          });
         }}
       >
-        要素を入れ替える
+        ROLL
       </button>
     </section>
   );
@@ -117,16 +120,6 @@ const HoverAnimeSample = ({
 export default function App() {
   return (
     <div className="App">
-      {/* <section>
-        <h5>アニメーション無し</h5>
-        <HoverAnimeSample anime={false} />
-      </section>
-
-      <section>
-        <h5>遅延させてアニメーション</h5>
-        <HoverAnimeSample anime={true} delay={500} />
-      </section> */}
-
       <section>
         <h5>遅延しないでアニメーション</h5>
         <HoverAnimeSample anime={true} />

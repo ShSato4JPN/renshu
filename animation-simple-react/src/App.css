@@ -46,3 +46,11 @@ section {
 .blue {
   background: rgba(130, 140, 231, 0.9);
 }
+
+.orange {
+  background: rgba(255, 199, 88, 0.9);
+}
+
+.green {
+  background: rgba(33, 157, 38, 0.9);
+}
