@@ -9,7 +9,7 @@ console.log(num.slice(8, 9))
 
 for (let i = 0; i < num.length; i++) {
   for (let j = i; j < num.length; j++) {
-    const pattern = num.slice(i, j+1)
+    const pattern = num.slice(i, j + 1)
 
     const value = pattern.reduce((acc, current) => {
       return acc + current
